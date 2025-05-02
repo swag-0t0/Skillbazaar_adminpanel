@@ -7,6 +7,32 @@
   top: 50px;
   z-index: 999;
 
+  .toggleIcon {
+    margin-left: auto;
+    font-size: 18px !important;
+    cursor: pointer;
+  }
+  
+  .submenuList {
+    list-style: none;
+    padding-left: 20px; 
+    margin-top: 5px;
+  
+    .submenuItem {
+      font-size: 14px;
+      padding: 6px 0;
+
+      color: #444;
+      cursor: pointer;
+      transition: background-color 0.2s;
+  
+      &:hover {
+        background-color: #f0f0ff;
+        border-radius: 6px;
+      }
+    }
+  }
+  
   .sidebarWrapper {
     padding: 20px;
     color: #555;

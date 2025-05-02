@@ -1,0 +1,32 @@
+.chart {
+    margin: 20px;
+    padding: 20px 30px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #e2eef3, #f8f8f7);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.05);
+  }
+  
+  .chartTitle {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .customTooltip {
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  }
+  
+  .customTooltip .label {
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .customTooltip .value {
+    color: #222;
+  }
+  

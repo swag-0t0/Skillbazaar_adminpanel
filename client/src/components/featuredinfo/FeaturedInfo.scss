@@ -1,0 +1,111 @@
+.featured {
+  margin: 1%;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.featuredItem {
+  flex: 1;
+  min-width: 250px;
+  height: 100px;
+  padding: 20px 25px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #efdecd, #fcf8f3);
+  cursor: pointer;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease;
+  position: relative;
+  overflow: hidden; // Ensures ::before respects border radius
+}
+
+.featuredItem::before {
+  content: "";
+  width: 5px;
+  height: 100%;
+  background-color: #d8921a;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.featuredItem:hover {
+    background: linear-gradient(135deg,#fcf8f3,#efdecd);
+    transition: 0.2s ease;
+}
+
+.featuredTitle {
+  font-size: 18px;
+  color: #444;
+  font-weight: 500;
+}
+
+.featuredMoneyContainer {
+  margin: 12px 0;
+  display: flex;
+  align-items: center;
+}
+
+.featuredMoney {
+  font-size: 32px;
+  font-weight: 700;
+  color: #333;
+}
+
+.featuredMoneyRate {
+  display: flex;
+  align-items: center;
+  margin-left: 16px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.featuredIcon {
+  font-size: 18px !important;
+  margin-left: 6px;
+  color: green;
+}
+
+.featuredIcon.negative {
+  color: red;
+}
+
+.featuredSub {
+  font-size: 14px;
+  color: #888;
+}
+
+@media screen and (max-width: 768px) {
+  .featured {
+    margin-top: 10%;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .featuredItem {
+    width: 70%;
+    margin-bottom: 15px;
+    min-width: unset;
+  }
+
+  .featuredTitle {
+    font-size: 16px;
+  }
+
+  .featuredMoney {
+    font-size: 26px;
+  }
+
+  .featuredMoneyRate {
+    font-size: 14px;
+  }
+
+  .featuredSub {
+    font-size: 13px;
+  }
+}

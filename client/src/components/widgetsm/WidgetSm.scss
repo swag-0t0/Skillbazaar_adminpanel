@@ -1,0 +1,96 @@
+.widgetSm {
+    flex: 1;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+    background-color: #fff;
+    .pagination {
+      display: flex;
+      gap: 5px;
+      margin-top: 15px;
+    
+      button {
+        padding: 4px 10px;
+        border: 1px solid #ccc;
+        background-color: white;
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: 14px;
+    
+        &.active {
+          background-color: #5550bd;
+          color: white;
+          border-color: #5550bd;
+        }
+    
+        &:hover {
+          background-color: #f0f0f0;
+        }
+      }
+    }
+    
+    .widgetSmTitle {
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+  
+    .widgetSmList {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+  
+      .widgetSmListItem {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 15px;
+  
+        .widgetSmImg {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          object-fit: cover;
+          margin-right: 10px;
+        }
+  
+        .widgetSmUser {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+  
+          .widgetSmUsername {
+            font-weight: 600;
+          }
+  
+          .widgetSmUserTitle {
+            font-size: 12px;
+            color: gray;
+          }
+        }
+  
+        .widgetSmButton {
+          display: flex;
+          align-items: center;
+          gap: 4px;
+          border: none;
+          border-radius: 10px;
+          padding: 5px 10px;
+          background-color: #eee;
+          color: #333;
+          cursor: pointer;
+          font-size: 14px;
+          transition: background-color 0.3s ease;
+  
+          &:hover {
+            background-color: #dcdcdc;
+          }
+  
+          .widgetSmIcon {
+            font-size: 18px;
+          }
+        }
+      }
+    }
+  }
+  

@@ -34,13 +34,21 @@ export default function Sidebar() {
             <h3 className="sidebarTitle">Dashboard</h3>
             <ul className="sidebarList">
               <Link to="/" className="link">
-                <li className={`sidebarListItem ${currentPath === "/" ? "active" : ""}`}>
+                <li
+                  className={`sidebarListItem ${
+                    currentPath === "/" ? "active" : ""
+                  }`}
+                >
                   <LineStyle className="sidebarIcon" />
                   Home
                 </li>
               </Link>
               <Link to="/analytics" className="link">
-                <li className={`sidebarListItem ${currentPath === "/analytics" ? "active" : ""}`}>
+                <li
+                  className={`sidebarListItem ${
+                    currentPath === "/analytics" ? "active" : ""
+                  }`}
+                >
                   <Timeline className="sidebarIcon" />
                   Analytics
                 </li>
@@ -52,7 +60,11 @@ export default function Sidebar() {
             <h3 className="sidebarTitle">Quick Menu</h3>
             <ul className="sidebarList">
               <Link to="/users" className="link">
-                <li className={`sidebarListItem ${currentPath === "/users" ? "active" : ""}`}>
+                <li
+                  className={`sidebarListItem ${
+                    currentPath === "/users" ? "active" : ""
+                  }`}
+                >
                   <PermIdentity className="sidebarIcon" />
                   Users
                 </li>
@@ -60,19 +72,53 @@ export default function Sidebar() {
               <li className="sidebarListItem" onClick={toggleManage}>
                 <WorkOutline className="sidebarIcon" />
                 Manage
-                {isManageOpen ? <Remove className="toggleIcon" /> : <Add className="toggleIcon" />}
+                {isManageOpen ? (
+                  <Remove className="toggleIcon" />
+                ) : (
+                  <Add className="toggleIcon" />
+                )}
               </li>
               {isManageOpen && (
                 <ul className="submenuList">
-                  <li className="submenuItem">Add Moderators</li>
-                  <li className="submenuItem">Add Category</li>
-                  <li className="submenuItem">Add Advertisement</li>
+                  <Link to="/moderators" className="link">
+                    <li
+                      className={`sidebarListItem ${
+                        currentPath === "/moderators" ? "active" : ""
+                      }`}
+                    >
+                      Add Moderators
+                    </li>
+                  </Link>
+                  <Link to="/categories" className="link">
+                    <li
+                      className={`sidebarListItem ${
+                        currentPath === "/categories" ? "active" : ""
+                      }`}
+                    >
+                      Add Categories
+                    </li>
+                  </Link>
+                  <Link to="/advertisements" className="link">
+                    <li
+                      className={`sidebarListItem ${
+                        currentPath === "/advertisements" ? "active" : ""
+                      }`}
+                    >
+                      Add Advertisements
+                    </li>
+                  </Link>
                 </ul>
               )}
-              <li className="sidebarListItem">
-                <ChatBubbleOutline className="sidebarIcon" />
-                Messages
-              </li>
+              <Link to="/message" className="link">
+                <li
+                  className={`sidebarListItem ${
+                    currentPath === "/message" ? "active" : ""
+                  }`}
+                >
+                  <ChatBubbleOutline className="sidebarIcon" />
+                  Queries
+                </li>
+              </Link>
             </ul>
           </div>
         </div>
@@ -80,3 +126,4 @@ export default function Sidebar() {
     </>
   );
 }
+

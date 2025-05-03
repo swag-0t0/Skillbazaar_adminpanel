@@ -1,0 +1,105 @@
+.moderatorsPage {
+  flex: 4;
+  padding: 20px;
+
+  .addModeratorCard {
+    background: linear-gradient(135deg, #fdf2e3, #f1f8ff);
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+
+    h2 {
+      margin-bottom: 15px;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column; 
+        gap: 15px;
+        width: 50%;
+      }
+      
+      input,
+      select {
+        padding: 10px;
+        font-size: 14px;
+        width: 100%; /* Ensures the input and select elements take full width */
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      
+      button {
+        width: 40%;
+        padding: 10px 20px;
+        background-color: #060707;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      
+      button:hover {
+        background-color: #1f2025;
+      }
+  }
+
+  .moderatorsTableContainer {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    overflow-x: auto;
+
+    h2 {
+      margin-bottom: 15px;
+    }
+
+    .moderatorsTable {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 700px;
+
+      th,
+      td {
+        text-align: left;
+        padding: 12px;
+        font-size: 14px;
+      }
+
+      th {
+        background-color: #f5f5f5;
+        font-weight: 600;
+      }
+
+      .modAvatar {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .deleteIcon {
+        color: red;
+        cursor: pointer;
+
+        &:hover {
+          transform: scale(1.2);
+        }
+      }
+
+      tr:hover {
+        background-color: #f0f0f0;
+      }
+
+      .altRow {
+        background-color: #f9f9f9;
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .addModeratorCard form {
+      flex-direction: column;
+    }
+  }
+}

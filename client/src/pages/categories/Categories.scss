@@ -1,0 +1,109 @@
+.categoriesPage {
+  flex: 4;
+  padding: 20px;
+}
+
+.categoriesContainer {
+  background: linear-gradient(135deg, #fdf2e3, #f1f8ff);
+  border-radius: 10px;
+  padding: 20px;
+  overflow-x: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: 0.3s ease;
+}
+
+.addCategoryCard {
+  margin-bottom: 30px;
+
+  h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 40%;
+    input,
+    select {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    .imageUpload label {
+      margin-right: 10px;
+      margin-bottom: 5px;
+      font-weight: 500;
+    }
+
+    button {
+      width: 150px;
+      padding: 10px;
+      background-color: #000000;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+
+      &:hover {
+        background-color: #343638;
+      }
+    }
+  }
+}
+
+.categoryList {
+  h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+
+    li {
+      display: flex;
+      gap: 20px;
+      background-color: #ffffff;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+      img {
+        width: 50px;
+        height: 50px;
+        border-radius: 8px;
+        object-fit: cover;
+      }
+      .deleteIcon {
+        color: red;
+        cursor: pointer;
+        transition: 0.3s ease;
+        margin-left: auto;
+        right: 0;
+        &:hover {
+          transform: scale(1.2);
+        }
+      }
+
+      .details {
+        h4 {
+          margin: 0;
+          font-size: 16px;
+        }
+
+        p {
+          margin: 5px 0 0;
+          font-size: 14px;
+          color: #666;
+        }
+      }
+    }
+  }
+}

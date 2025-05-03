@@ -4,7 +4,7 @@
   background-color: rgb(251, 251, 255);
   position: sticky;
   top: 0;
-  z-index: 999;
+  z-index: 99;
 }
 
 .topbarWrapper {
@@ -21,13 +21,21 @@
 }
 
 .topLeft img {
-  height: 40px; 
-  object-fit: contain; 
+  height: 40px;
+  object-fit: contain;
 }
 
 .topRight {
   display: flex;
   align-items: center;
+  
+.logout{
+  cursor: pointer;
+  color: #d82020;
+  font-size: 25px;
+  font-weight: 500;
+  margin-right: 7px;
+}
 }
 
 .topbarIconContainer {
@@ -57,6 +65,5 @@
   height: 40px;
   border-radius: 50%;
   cursor: pointer;
-  object-fit: cover; /* Ensures the avatar is cropped to fit the circular shape */
-  margin-left: 10px; /* Adds some space between the avatar and icon */
+  object-fit: cover;
 }

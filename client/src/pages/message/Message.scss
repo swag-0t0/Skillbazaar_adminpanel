@@ -1,0 +1,93 @@
+.message {
+    flex: 4;
+    padding: 24px;
+    font-family: "Inter", sans-serif;
+    color: #2c3e50;
+}
+
+h2 {
+    margin-bottom: 24px;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.messageCard {
+    background: linear-gradient(135deg, #fdf2e3, #f1f8ff);
+    padding: 24px;
+    margin-bottom: 24px;
+    border-radius: 14px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+
+.userInfo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.userAvatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 16px;
+    object-fit: cover;
+    border: 2px solid #0b79d0;
+}
+
+.userDetails h4 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 300;
+}
+
+.userDetails p {
+    margin: 2px 0 0;
+    font-size: 14px;
+    color: #7f8c8d;
+}
+
+.messageContent {
+    margin: 12px 0 24px;
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+.replySection {
+    display: flex;
+    align-items: center;
+    width: 60%;
+}
+
+.replyBtn {
+    background: transparent;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-right: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    transition: background 0.3s ease;
+}
+
+.replyBtn:hover {
+    background: #d3dfea9a;
+}
+
+input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #bdc3c7;
+    font-size: 15px;
+    transition: border-color 0.3s ease;
+}
+
+input:focus {
+    border-color: #0b79d0;
+    outline: none;
+}

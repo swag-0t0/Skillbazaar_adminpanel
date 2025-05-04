@@ -29,7 +29,7 @@ const Login = ({ setIsAuthenticated }) => {
     <div className="loginPage">
       <div className="loginLeft">
         <div className="loginCard">
-          <h2>Login</h2>
+          <h2>Login Here!</h2>
           <form onSubmit={handleLogin}>
             <input
               type="email"
@@ -55,7 +55,7 @@ const Login = ({ setIsAuthenticated }) => {
       </div>
 
       <div className="loginRight">
-        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c" alt="" />
+        {/* <img src="https://img.freepik.com/free-vector/technology-wire-mesh-network-connection-digital-background_1017-28407.jpg?t=st=1746305614~exp=1746309214~hmac=d6e7371f3f253a0c4360cc9d73de3021d09bcbafea923ad78675ecbc63dd2ebf&w=1380" alt="" /> */}
       </div>
     </div>
   );

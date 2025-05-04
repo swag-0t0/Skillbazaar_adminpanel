@@ -9,27 +9,27 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 40px;
-  background-color: #f7f9fb;
+
   .loginCard {
+    
     width: 100%;
-    max-width: 300px;
+
+    max-width: 400px;
     padding: 40px;
-    background: #fff;
+    background: #ffffff84;
     border-radius: 12px;
     text-align: center;
-
+    background: linear-gradient(135deg, #fdf2e3, #f1f8ff);
     h2 {
       margin-bottom: 25px;
       font-size: 24px;
       color: #333;
     }
-
     form {
       display: flex;
       flex-direction: column;
       gap: 15px;
-
+     
       input {
         padding: 12px 15px;
         font-size: 14px;
@@ -61,16 +61,10 @@
 }
 
 .loginRight {
-    flex: 2;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-  
-    img {
-      width: 100%;
-      height: 100vh;
-      object-fit: cover;
-    }
+  background-color: linear-gradient(135deg, #fdf2e3, #f1f8ff);;
+  img {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
   }
-  
+}

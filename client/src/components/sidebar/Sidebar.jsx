@@ -1,4 +1,5 @@
 import "./Sidebar.scss";
+import api from '../../utils/axiosConfig'; // Fixed import path
 import {
   LineStyle,
   Timeline,
@@ -12,12 +13,19 @@ import {
 } from "@mui/icons-material";
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
+import { useQuery } from '@tanstack/react-query'; // Changed from 'react-query'
 
 export default function Sidebar() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isManageOpen, setIsManageOpen] = useState(false);
   const location = useLocation();
   const currentPath = location.pathname;
+
+  // Get current user role using React Query
+  const { data: currentUser } = useQuery({
+    queryKey: ['adminProfile'],
+    queryFn: () => api.get('/auth/verify').then(res => res.data.user)
+  });
 
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
   const toggleManage = () => setIsManageOpen(!isManageOpen);
@@ -80,15 +88,17 @@ export default function Sidebar() {
               </li>
               {isManageOpen && (
                 <ul className="submenuList">
-                  <Link to="/moderators" className="link">
-                    <li
-                      className={`sidebarListItem ${
-                        currentPath === "/moderators" ? "active" : ""
-                      }`}
-                    >
-                      Add Moderators
-                    </li>
-                  </Link>
+                  {currentUser?.role === 'admin' && (
+                    <Link to="/moderators" className="link">
+                      <li
+                        className={`sidebarListItem ${
+                          currentPath === "/moderators" ? "active" : ""
+                        }`}
+                      >
+                        Add Moderators
+                      </li>
+                    </Link>
+                  )}
                   <Link to="/categories" className="link">
                     <li
                       className={`sidebarListItem ${

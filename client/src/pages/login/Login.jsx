@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./Login.scss";
 
 const Login = ({ setIsAuthenticated }) => {
   const [formData, setFormData] = useState({ email: "", password: "" });
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -11,17 +13,19 @@ const Login = ({ setIsAuthenticated }) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/api/auth/login",
+        formData,
+        { withCredentials: true }
+      );
 
-    if (
-      formData.email === "admin@example.com" &&
-      formData.password === "123456"
-    ) {
       setIsAuthenticated(true);
-      navigate("/");
-    } else {
-      alert("Invalid email or password");
+      navigate("/", { replace: true });
+    } catch (err) {
+      setError(err.response?.data?.message || "Login failed");
     }
   };
 
@@ -30,6 +34,7 @@ const Login = ({ setIsAuthenticated }) => {
       <div className="loginLeft">
         <div className="loginCard">
           <h2>Login Here!</h2>
+          {error && <div className="error">{error}</div>}
           <form onSubmit={handleLogin}>
             <input
               type="email"
@@ -55,7 +60,7 @@ const Login = ({ setIsAuthenticated }) => {
       </div>
 
       <div className="loginRight">
-        {/* <img src="https://img.freepik.com/free-vector/technology-wire-mesh-network-connection-digital-background_1017-28407.jpg?t=st=1746305614~exp=1746309214~hmac=d6e7371f3f253a0c4360cc9d73de3021d09bcbafea923ad78675ecbc63dd2ebf&w=1380" alt="" /> */}
+        {/* Right side content */}
       </div>
     </div>
   );

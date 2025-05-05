@@ -2,17 +2,44 @@ import React from "react";
 import "./Topbar.scss";
 import { useNavigate } from "react-router-dom";
 import PowerSettingsNewOutlinedIcon from "@mui/icons-material/PowerSettingsNewOutlined";
+import { useQuery } from "@tanstack/react-query";
+import api from "../../utils/axiosConfig";
 
-export default function Topbar() {
-  const Navigate = useNavigate();
-  const userId = "123";
+export default function Topbar({ setIsAuthenticated }) {
+  const navigate = useNavigate();
+
+  const { isLoading, error, data: adminData } = useQuery({
+    queryKey: ["adminProfile"],
+    queryFn: async () => {
+      const response = await api.get("/auth/verify");
+      console.log("Admin Data:", response.data.user);
+      return response.data.user;
+
+    },
+  });
 
   const handleProfileClick = () => {
-    Navigate(`/profile/${userId}`);
+    if (adminData?.id) {
+      navigate(`/profile/${adminData.id}`);
+    }
   };
-  const handleLogout = () => {
-    Navigate("/login");
+
+  const handleLogout = async () => {
+    try {
+      await api.post("/auth/logout");
+      setIsAuthenticated(false);
+      navigate("/login", { replace: true });
+    } catch (err) {
+      console.error("Logout failed:", err);
+    }
   };
+
+  // Show loading state
+  if (isLoading) return <div className="loading">Loading...</div>;
+
+  // Show error state
+  if (error) return <div className="error">Error loading profile</div>;
+
   return (
     <div className="topbar">
       <div className="topbarWrapper">
@@ -26,8 +53,8 @@ export default function Topbar() {
           />
           <img
             onClick={handleProfileClick}
-            src="https://images.pexels.com/photos/1526814/pexels-photo-1526814.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-            alt=""
+            src={adminData?.image || "https://images.pexels.com/photos/1526814/pexels-photo-1526814.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"}
+            alt={adminData?.fullname || "Admin"}
             className="topAvatar"
           />
         </div>

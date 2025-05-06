@@ -82,4 +82,27 @@
       }
     }
   }
-  
+
+.widgetLgStatus {
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 14px;
+
+  &.completed {
+    background: #e5faf2;
+    color: #3bb077;
+  }
+
+  &.pending {
+    background: #fff0f1;
+    color: #d95087;
+  }
+}
+
+.widgetLgDownloadIcon {
+  cursor: pointer;
+  color: #555;
+  &:hover {
+    color: #000;
+  }
+}

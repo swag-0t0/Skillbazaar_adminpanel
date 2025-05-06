@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import authRoute from "./routes/auth.route.js";
 import moderatorRoute from "./routes/moderator.route.js";
+import homeRoute from "./routes/home.route.js";
 
 dotenv.config();
 const app = express();
@@ -30,6 +31,7 @@ app.use(cors({
 }));
 app.use("/api/auth", authRoute);
 app.use("/api/moderators", moderatorRoute);
+app.use("/api/home", homeRoute);
 
 app.listen(8000, () => {
   connect();

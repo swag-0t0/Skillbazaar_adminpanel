@@ -79,3 +79,9 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `yarn build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+About me:
+Your multitasking is just you doing five things poorly at once.
+You're the type to charge your phone to 2% and feel accomplished.
+Your idea of solving problems is refreshing the page and hoping for divine intervention.
+If "ctrl + z" worked in real life, your whole past five years would be a blue screen.

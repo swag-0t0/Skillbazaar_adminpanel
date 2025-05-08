@@ -28,7 +28,7 @@ const Profile = () => {
     queryFn: async () => {
       const response = await api.get(`/moderators/single/${id}`);
       const userData = response.data;
-      console.log("Fetched user data:", userData);
+     // console.log("Fetched user data:", userData);
       
       // Directly set form data with fetched data
       setFormData({

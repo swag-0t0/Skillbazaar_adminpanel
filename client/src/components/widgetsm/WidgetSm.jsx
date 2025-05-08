@@ -13,7 +13,7 @@ const WidgetSm = () => {
     queryKey: ["allUsers"],
     queryFn: async () => {
       const response = await api.get("/home/users");
-      console.log("Fetched users:", response.data); 
+      //console.log("Fetched users:", response.data); 
       return response.data;
     },
   });

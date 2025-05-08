@@ -86,7 +86,7 @@ export const getRecentOrders = async (req, res) => {
             },
           };
         } catch (err) {
-          console.error(`Error fetching buyer for order ${order._id}:`, err);
+          console.error(`Error fetching buyer for order:`, err);
           return {
             ...order,
             buyer: {

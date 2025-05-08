@@ -12,7 +12,7 @@ export default function Topbar({ setIsAuthenticated }) {
     queryKey: ["adminProfile"],
     queryFn: async () => {
       const response = await api.get("/auth/verify");
-      console.log("Admin Data:", response.data.user);
+     // console.log("Admin Data:", response.data.user);
       return response.data.user;
 
     },

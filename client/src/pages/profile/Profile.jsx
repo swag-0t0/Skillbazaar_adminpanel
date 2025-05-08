@@ -26,24 +26,42 @@ const Profile = () => {
   const { isLoading } = useQuery({
     queryKey: ["profile", id],
     queryFn: async () => {
-      const response = await api.get(`/moderators/single/${id}`);
-      const userData = response.data;
-     // console.log("Fetched user data:", userData);
-      
-      // Directly set form data with fetched data
-      setFormData({
-        image: userData.image || "",
-        fullname: userData.fullname || "",
-        email: userData.email || "",
-        phone: userData.phone || "",
-        address: userData.address || "",
-        role: userData.role || "",
-        currentPassword: "",
-        newPassword: "",
-        confirmPassword: ""
-      });
-      
-      return userData;
+      try {
+        // First try to fetch as moderator
+        const response = await api.get(`/moderators/single/${id}`);
+        const userData = response.data;
+        setFormData({
+          image: userData.image || "",
+          fullname: userData.fullname || "",
+          email: userData.email || "",
+          phone: userData.phone || "",
+          address: userData.address || "",
+          role: "moderator", // Set role explicitly
+          currentPassword: "",
+          newPassword: "",
+          confirmPassword: ""
+        });
+        return userData;
+      } catch (error) {
+        // If moderator fetch fails, try admin endpoint
+        if (error.response?.status === 404) {
+          const adminResponse = await api.get(`/moderators/admin/${id}`);
+          const adminData = adminResponse.data;
+          setFormData({
+            image: adminData.image || "",
+            fullname: adminData.fullname || "",
+            email: adminData.email || "",
+            phone: adminData.phone || "",
+            address: adminData.address || "",
+            role: "admin", // Set role explicitly
+            currentPassword: "",
+            newPassword: "",
+            confirmPassword: ""
+          });
+          return adminData;
+        }
+        throw error;
+      }
     }
   });
 
@@ -76,18 +94,17 @@ const Profile = () => {
     }
   };
 
-  // Update mutation with navigation and alert
+  // Update mutation with correct endpoints
   const updateMutation = useMutation({
     mutationFn: (updateData) => {
-      // Send base64 image directly in the update request
-      return api.put(`/moderators/update/${id}`, updateData);
+      const endpoint = formData.role === 'admin' 
+        ? `/moderators/admin/update/${id}`
+        : `/moderators/update/${id}`;
+      return api.put(endpoint, updateData);
     },
     onSuccess: () => {
       queryClient.invalidateQueries(["profile", id]);
-      queryClient.invalidateQueries(["adminProfile"]);
       setError(null);
-      
-      // Show alert and navigate
       alert("Profile updated successfully!");
       navigate("/");
     },

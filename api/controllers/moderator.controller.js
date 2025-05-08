@@ -160,3 +160,88 @@ export const updateModerator = async (req, res) => {
     res.status(500).json({ message: "Something went wrong!" });
   }
 };
+
+export const getAdminProfile = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const admin = await Admin.findOne({ _id: id, role: "admin" })
+      .select("-password")
+      .lean();
+
+    if (!admin) {
+      return res.status(404).json({ message: "Admin not found!" });
+    }
+
+    // Add default image if not present
+    const adminWithDefaults = {
+      ...admin,
+      image: admin.image || "https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg"
+    };
+
+    res.status(200).json(adminWithDefaults);
+  } catch (err) {
+    console.error('Get admin error:', err);
+    res.status(500).json({ message: "Something went wrong!" });
+  }
+};
+
+export const updateAdminProfile = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { 
+      fullname, 
+      email, 
+      phone, 
+      address, 
+      currentPassword, 
+      newPassword,
+      image 
+    } = req.body;
+
+    const admin = await Admin.findOne({ _id: id, role: "admin" });
+    if (!admin) {
+      return res.status(404).json({ message: "Admin not found!" });
+    }
+
+    // Prepare update object
+    const updateData = {
+      fullname: fullname || admin.fullname,
+      email: email || admin.email,
+      phone: phone || admin.phone,
+      address: address || admin.address,
+      image: image || admin.image
+    };
+
+    // If email is being changed, check if it's already in use
+    if (email && email !== admin.email) {
+      const emailExists = await Admin.findOne({ email });
+      if (emailExists) {
+        return res.status(400).json({ message: "Email already in use!" });
+      }
+    }
+
+    // Handle password update if provided
+    if (currentPassword && newPassword) {
+      const isCorrect = await bcrypt.compare(currentPassword, admin.password);
+      if (!isCorrect) {
+        return res.status(400).json({ message: "Current password is incorrect!" });
+      }
+      updateData.password = await bcrypt.hash(newPassword, 10);
+    }
+
+    const updatedAdmin = await Admin.findByIdAndUpdate(
+      id,
+      updateData,
+      { new: true }
+    ).select("-password");
+
+    res.status(200).json({
+      message: "Admin updated successfully!",
+      admin: updatedAdmin
+    });
+
+  } catch (err) {
+    console.error('Update admin error:', err);
+    res.status(500).json({ message: "Something went wrong!" });
+  }
+};

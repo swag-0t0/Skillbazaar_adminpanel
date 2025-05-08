@@ -36,7 +36,7 @@ export const login = async (req, res) => {
         role: admin.role 
       },
       process.env.JWT_SECRET,
-      { expiresIn: "3d" }
+      { expiresIn: "2h" }
     );
 
     // Send response
@@ -45,7 +45,7 @@ export const login = async (req, res) => {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
         sameSite: "strict",
-        maxAge: 3 * 24 * 60 * 60 * 1000 // 3 days
+        maxAge: 2 * 60 * 60 * 1000 // 2 hour
       })
       .status(200)
       .json({ 

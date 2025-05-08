@@ -1,32 +1,94 @@
 .chart {
-    margin: 20px;
-    padding: 20px 30px;
-    border-radius: 12px;
-    background: linear-gradient(135deg, #e2eef3, #f8f8f7);
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.05);
+  margin: 20px;
+  padding: 24px;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
   }
-  
-  .chartTitle {
-    font-size: 20px;
+}
+
+.chartTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #111827;
+  margin: 0;
+}
+
+.customTooltip {
+  background-color: #ffffff;
+  padding: 12px 16px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(136, 132, 216, 0.2);
+
+  .label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #4B5563;
+    margin-bottom: 4px;
+  }
+
+  .value {
+    font-size: 1rem;
     font-weight: 600;
-    color: #333;
-    margin-bottom: 20px;
+    color: #111827;
   }
-  
-  .customTooltip {
-    background-color: #fff;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+.chartHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+select {
+  padding: 8px 32px 8px 16px;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: #374151;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236B7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+  background-position: right 8px center;
+  background-repeat: no-repeat;
+  background-size: 16px;
+  transition: all 0.2s ease;
+
+  &:hover {
+    border-color: #8884d8;
   }
-  
-  .customTooltip .label {
-    font-weight: bold;
-    color: #555;
+
+  &:focus {
+    outline: none;
+    border-color: #8884d8;
   }
-  
-  .customTooltip .value {
-    color: #222;
+}
+
+.yearSelect {
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  font-size: 14px;
+  cursor: pointer;
+  outline: none;
+
+  &:hover {
+    border-color: #8884d8;
   }
-  
+
+  &:focus {
+    border-color: #8884d8;
+    box-shadow: 0 0 0 2px rgba(136, 132, 216, 0.2);
+  }
+}

@@ -10,38 +10,56 @@
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 
     h2 {
+      display: flex;
+      align-items: center;
+      gap: 10px;
       margin-bottom: 15px;
     }
 
-    form {
-        display: flex;
-        flex-direction: column; 
-        gap: 15px;
-        width: 50%;
-      }
-      
-      input,
-      select {
+    .formGroup {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 15px;
+
+      input {
+        flex: 1;
         padding: 10px;
         font-size: 14px;
-        width: 100%; /* Ensures the input and select elements take full width */
         border: 1px solid #ccc;
         border-radius: 5px;
       }
-      
-      button {
-        width: 40%;
-        padding: 10px 20px;
-        background-color: #060707;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-      }
-      
-      button:hover {
-        background-color: #1f2025;
-      }
+    }
+
+    form {
+      display: flex;
+      flex-direction: column; 
+      gap: 15px;
+      width: 50%;
+    }
+    
+    input,
+    select {
+      padding: 10px;
+      font-size: 14px;
+      width: 100%; /* Ensures the input and select elements take full width */
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    
+    button {
+      width: 40%;
+      padding: 10px 20px;
+      background-color: #060707;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    
+    button:hover {
+      background-color: #1f2025;
+    }
   }
 
   .moderatorsTableContainer {

@@ -14,12 +14,13 @@ import "./App.scss";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import axios from "axios";
 
-function App() {
+
+function AppContent() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const location = useLocation();
   const isLoginPage = location.pathname === "/login";
-  
+
   // Create a new QueryClient instance
   const queryClient = new QueryClient({
     defaultOptions: {
@@ -33,10 +34,13 @@ function App() {
   useEffect(() => {
     const verifyAuth = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/api/auth/verify", {
-          withCredentials: true
-        });
-        
+        const response = await axios.get(
+          "http://localhost:8000/api/auth/verify",
+          {
+            withCredentials: true,
+          }
+        );
+
         setIsAuthenticated(response.data.isValid);
       } catch (err) {
         setIsAuthenticated(false);
@@ -61,26 +65,79 @@ function App() {
         <div className="container">
           {!isLoginPage && isAuthenticated && <Sidebar />}
           <Routes>
-            <Route 
-              path="/login" 
+            <Route
+              path="/login"
               element={
-                isAuthenticated ? 
-                  <Navigate to="/" replace /> : 
+                isAuthenticated ? (
+                  <Navigate to="/" replace />
+                ) : (
                   <Login setIsAuthenticated={setIsAuthenticated} />
-              } 
+                )
+              }
             />
-            <Route path="/" element={isAuthenticated ? <Home /> : <Navigate to="/login" replace />} />
-            <Route path="/analytics" element={isAuthenticated ? <Analytics /> : <Navigate to="/login" replace />} />
-            <Route path="/users" element={isAuthenticated ? <Users /> : <Navigate to="/login" replace />} />
-            <Route path="/moderators" element={isAuthenticated ? <Moderators /> : <Navigate to="/login" replace />} />
-            <Route path="/categories" element={isAuthenticated ? <Categories /> : <Navigate to="/login" replace />} />
-            <Route path="/message" element={isAuthenticated ? <Message /> : <Navigate to="/login" replace />} />
-            <Route path="/profile/:id" element={isAuthenticated ? <Profile /> : <Navigate to="/login" replace />} />
+            <Route
+              path="/"
+              element={
+                isAuthenticated ? <Home /> : <Navigate to="/login" replace />
+              }
+            />
+            <Route
+              path="/analytics"
+              element={
+                isAuthenticated ? (
+                  <Analytics />
+                ) : (
+                  <Navigate to="/login" replace />
+                )
+              }
+            />
+            <Route
+              path="/users"
+              element={
+                isAuthenticated ? <Users /> : <Navigate to="/login" replace />
+              }
+            />
+            <Route
+              path="/moderators"
+              element={
+                isAuthenticated ? (
+                  <Moderators />
+                ) : (
+                  <Navigate to="/login" replace />
+                )
+              }
+            />
+            <Route
+              path="/categories"
+              element={
+                isAuthenticated ? (
+                  <Categories />
+                ) : (
+                  <Navigate to="/login" replace />
+                )
+              }
+            />
+            <Route
+              path="/message"
+              element={
+                isAuthenticated ? <Message /> : <Navigate to="/login" replace />
+              }
+            />
+            <Route
+              path="/profile/:id"
+              element={
+                isAuthenticated ? <Profile /> : <Navigate to="/login" replace />
+              }
+            />
           </Routes>
         </div>
       </>
     </QueryClientProvider>
   );
+}
+
+function App() {
+  return <AppContent />;
 }
 
 export default App;

@@ -134,3 +134,30 @@ export const deleteUser = async (req, res) => {
     res.status(500).json({ message: "Error deleting user" });
   }
 };
+
+export const getTransactionData = async (req, res) => {
+  try {
+    const transactions = await Order.aggregate([
+      {
+        $match: { isCompleted: true }, 
+      },
+      {
+        $group: {
+          _id: { $dateToString: { format: "%m-%Y", date: "$createdAt" } }, // Group by month and year
+          totalAmount: { $sum: "$price" }, // Sum the price field
+        },
+      },
+      { $sort: { _id: -1 } }, // Sort by month and year
+    ]);
+
+    const formattedData = transactions.map((transaction) => ({
+      name: transaction._id, // Month and year ("03-2025")
+      amount: transaction.totalAmount, // Total transaction amount for the month
+    }));
+
+    res.status(200).json(formattedData);
+  } catch (err) {
+    console.error("Error fetching transaction data:", err);
+    res.status(500).json({ message: "Error fetching transaction data" });
+  }
+};

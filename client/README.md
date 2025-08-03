@@ -1,5 +1,6 @@
 # Getting Started with Create React App
 
+# need to install them
 npx create react-app 
 yarn add vite --dev
 yarn add -D @vitejs/plugin-react
@@ -9,6 +10,12 @@ yarn add sass
 yarn add react-router-dom@^6.18.0
 yarn add react-countup
 yarn add recharts
+
+# admins and moderators
+admin - sbadmin@gmail.com
+password - sbadmin
+moderator - mosabbir@gmail.com
+password - mosabbir
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

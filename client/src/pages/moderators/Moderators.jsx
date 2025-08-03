@@ -23,7 +23,7 @@ const Moderators = () => {
   });
 
   // Fetch moderators
-  const { data: moderators = [] } = useQuery({
+  const { data: moderators = [],isLoading } = useQuery({
     queryKey: ["moderators"],
     queryFn: () => api.get("/moderators/list").then((res) => res.data),
     enabled: currentUser?.role === "admin",

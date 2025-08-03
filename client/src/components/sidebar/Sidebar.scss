@@ -1,10 +1,10 @@
 .sidebar {
-  flex: 1;
+  width: 250px; /* fixed width */
   height: calc(100vh - 50px);
   background-color: rgb(251, 251, 255);
   position: sticky;
   top: 50px;
-  z-index:9;
+  z-index: 9;
 
   .toggleIcon {
     margin-left: auto;
@@ -39,7 +39,7 @@
 
   .sidebarMenu {
     margin-bottom: 10px;
-
+    
     .sidebarTitle {
       font-size: 13px;
       color: rgb(187, 186, 186);
@@ -55,7 +55,7 @@
         padding: 5px;
         cursor: pointer;
         border-radius: 10px;
-        transition: all 0.2s ease;
+        transition: background-color 0.2s ease; /* Only transition background */
 
         &:hover {
           background-color: rgb(240, 240, 255);
@@ -81,6 +81,7 @@
   }
 }
 
+/* Hamburger icon remains as is for mobile toggling */
 .hamburger {
   display: none;
   position: fixed;
@@ -94,12 +95,11 @@
 }
 
 @media screen and (max-width: 768px) {
-
   .sidebar {
     position: fixed;
-    left: -100%;
+    left: -250px; /* offset by fixed width */
     width: 250px;
-    transition: 0.3s ease;
+    transition: left 0.3s ease; /* animate only the left property */
     
     &.active {
       left: 0;
@@ -108,6 +108,5 @@
 
   .hamburger {
     display: block;
-
   }
 }

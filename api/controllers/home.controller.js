@@ -108,8 +108,8 @@ export const getRecentOrders = async (req, res) => {
 export const getAllUsers = async (req, res) => {
   try {
     const users = await User.find()
-      .select("username img isSeller createdAt")
-      .sort({ createdAt: -1 }) // descending order
+      .select("username img isSeller createdAt email phone country desc") 
+      .sort({ createdAt: -1 })
       .lean();
 
     res.status(200).json(users);
